@@ -1,0 +1,59 @@
+{%extends 'nav.html'%}
+
+
+{%block content%}
+
+          <img src="/static/images/nehemiah.jpg" alt="" class="user-pic" onclick="toggleMenu()">
+        </div>
+        <div class="sub-menu-wrap" id="subMenu">
+          <div class="sub-menu">
+            
+              <div class="user-info">
+                  <img src="/static/images/nehemiah.jpg" alt="" >
+                  <h6>{{ current_user.username }}</h6>
+              </div>
+              <hr>
+              <a href="" class="sub-menu-link">
+                  <i class="fa-regular fa-pen-to-square"></i>
+                  <p>Edit Profile</p>
+                  <span>></span>
+              </a>
+              <a href="" class="sub-menu-link">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <p>My Purchases</p>
+                  <span>></span>
+              </a>
+              <a href="" class="sub-menu-link">
+                  <i class="fa-solid fa-gears"></i>
+                  <p>Settings</p>
+                  <span>></span>
+              </a>
+              {% if current_user.is_authenticated %}
+              <a href="{{url_for('logout')}}" class="sub-menu-link">
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                  <p>Sign out</p>
+                  <span>></span>
+              </a>
+              {%endif%}
+              
+          </div>
+      </div>
+      </div>
+    </nav>
+   
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script>
+  let subMenu = document.getElementById('subMenu');
+function toggleMenu(){
+subMenu.classList.toggle('open-menu');
+}
+</script>
+{%endblock%}
+
+
+
+
+

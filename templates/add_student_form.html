@@ -1,0 +1,81 @@
+
+{%include 'nav.html'%}
+
+<div class="row  ">
+
+    <div class="col-lg-6">     
+<div>
+<h1 class="first"> Add Student</h1>
+<hr>
+</div>
+
+<div class="myForm">
+<form action="/students/add" method="POST" class="forms" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <label for="First Name"> First Name</label>
+    {{form.first_name()}}
+    <label for="Second Name"> Second Name</label>
+    {{form.second_name()}}
+    <label for="email"> Email Address</label>
+    {{form.email()}}
+    <label for="fee paid"> Fee Paid</label>
+    {{form.fee_paid}}
+    
+    <div class="mb-2">
+        <label for="formFile" class="form-label">Upload Image</label>
+        <input class="form-control-sm" type="file" id="formFile" name="image">
+      </div>
+      
+    <div class="button">
+    {{form.submit()}}
+    </div>
+</form>
+</div>
+</div>
+
+      <div class="col-lg-5">
+        <h1 class="first"> All Admitted Students</h1>
+        <hr>
+        <div class="myT">
+
+            <table>
+                <tr>
+                    <th> #</th>
+                    <th>First Name</th>
+                    <th>Second Name</th>
+                    <th>Action</th>
+                </tr>
+                {%for students in student%}
+                <tr>
+                    <td>{{students.id}}</td>
+                    <td>{{students.first_name}}</td>
+                    <td>{{students.second_name}}</td>
+                    <td>
+                    <div class="container2">
+                        <div class="action">
+                            <a href="{{url_for('student_detail', id=students.id)}}"><button type="submit" class="btn btn-info">View</button></a>
+                            <a href="{{url_for('update_student', id=students.id)}}"><button type="submit" class="btn btn-success">Update</button></a>
+                            <button type="submit"  class="btn btn-danger" onclick="openPopup()">Delete</button>
+
+                        <div class="popup" id="popup">
+                        <img src="/static/images/danger.png" alt="" width="50" height="50">
+                        <h2> Do you want to delete, {{students.id}}?</h2>
+                        <p> Warning! Once deleted the user will be permanently removed from the database</p>
+                        <button type="submit" class="btn-secondary" onclick="closePopup()"> Cancel</button>
+                        <a href=" {{ url_for('delete_student', id=students.id) }}"> <button type="submit" class="btn-danger"> Delete </button></a>
+                    </div>
+                    </div>
+                    </div>
+                    </td>
+            
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+      </div>
+</div>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+
+
+

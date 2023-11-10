@@ -1,0 +1,63 @@
+{%include 'nav.html'%}
+<div class="center">
+    <h1> Log in </h1>
+    <form action="{{ url_for('login') }}" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="input-field">
+            {% if form.email.errors %}
+            {{ form.email(class="is-invalid", placeholder="Email") }}
+
+            <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                 <span>{{error}} </span>
+                {%endfor%}
+            </div>
+            {%else%}
+            {{form.email(placeholder='Email')}}
+            <span></span>
+            {% endif %}   
+        </div>
+
+        <div class="input-field">
+            {%if form.password.errors%}
+            {{form.password(placeholder='Password', id='createPass', class="is-invalid")}} 
+            
+            <div class="invalid-feedback">
+                {% for error in form.password.errors %}
+                <span>{{error}}</span>
+                {%endfor%}
+            </div>
+            {%else%}
+            {{form.password(placeholder='Password', id='createPass')}} 
+            <i class="fas fa-eye-slash show"></i> 
+            <span></span>
+            {% endif %}
+        </div>
+       
+    
+        <div class="forgot-pass">Forgot Password?</div>
+        {{form.submit()}}
+        <div class="signup">
+            Not a member? <a href="{{ url_for('login') }}">Sign Up</a>
+        </div>
+    </form>
+</div>
+
+<script >
+
+const showPassword    = document.querySelector('.show');
+const createPassword  = document.querySelector('#createPass')
+
+showPassword.addEventListener('click', ()=>{
+    if ((createPassword.type === 'password')){
+        createPassword.type='text';
+        showPassword.classList.replace('fa-eye-slash' ,'fa-eye');
+    } else{
+        createPassword.type= 'password';
+        showPassword.classList.replace('fa-eye' ,'fa-eye-slash')
+    }
+});
+</script>
+
+
+

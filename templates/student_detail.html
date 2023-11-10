@@ -1,0 +1,34 @@
+{%include 'nav.html'%}
+
+{%for students, fees in student%}
+<section id="students" class="section-spacing">
+
+    <div class="container">
+        <h1 class="text-center"> Details About: {{students.first_name}} {{students.second_name}}</h1>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 py-5 justify-content-center">
+
+        <div class="card" style="width: 40rem;">
+            <img src=" {{ url_for ('static', filename=students.image) }}" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">{{students.first_name}}  {{students.second_name}}</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"> <b>Admission Number:</b> {{students.id}}</li>
+              <li class="list-group-item"><b>Email:</b> {{students.email}}</li>
+              <li class="list-group-item"><b>Fee Paid:</b> {{students.fee_paid}}</li>
+              <li class="list-group-item"><b>Fee Amount:</b> {{fees.fee_total}}</li>
+              <li class="list-group-item"><b>Balance:</b> {{fees.fee_total - students.fee_paid}}</li>
+            </ul>
+            <div class="d-flex justify-content-around mb-3 mt-3">
+            
+            <a href="#" class="card-link"><button class="btn btn-primary"> Card Link</button></a>
+              <a href="#" class="card-link"><button class="btn btn-primary"> Another Link</button></a>
+            </div>
+          </div>
+    </div>
+    
+</section>
+{%endfor%}

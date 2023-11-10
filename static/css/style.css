@@ -1,0 +1,486 @@
+.navbar-nav .nav-link{
+    font-weight: 800;
+    color: var(black);
+    
+}
+.nav-item{
+    padding: 0 0 0 10px;
+}
+
+body{
+    background: whitesmoke;
+}
+
+a{
+    text-decoration: none;
+    color: skyblue;
+    transition: all 0.5ms ease;
+}
+.btn-brand:hover{
+    background-color: black;
+    color: white;
+}
+.btn{
+    font-weight: 400;
+    font-size: 15px;
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
+.navbar{
+   box-shadow: 0 2px 15px 0 lightgray;
+}
+
+#hero {
+    background: url(/static/images/school7.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+/*Section Styling*/
+.section-spacing{
+    padding: 100px 0;   
+}
+
+.about-title {
+    margin-bottom: 60px; 
+}
+.about-title .line{
+    width: 60px;
+    height: 5px;
+    background-color: skyblue;
+    margin: 16px auto 24px auto;
+}
+.about-title p{
+    max-width: 500px;
+    margin: 0 auto;
+}
+.about-text{
+    color: black;
+}
+
+.iconItem{
+    width: 50px;
+    height: 55px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: whitesmoke; 
+    color: skyblue;
+    flex: none;
+}
+
+.myForm{
+    background: whitesmoke;
+    display: flex;
+    width: 60%;
+}
+
+.forms{
+    background-color: whitesmoke;
+    border-radius: 20px;
+    width: 100%;
+    padding: 25px;
+}
+
+input[type=text], input[type=email], input[type=password],input[type=date],input[type=number]{
+    width: 100%;
+    margin: 5px 0px;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-left: 5px;
+    border: 2px solid black;
+}
+
+form{
+    margin-left: 40px;
+}
+
+hr{
+    width: 30%;
+    border: 3px solid lightskyblue;
+    border-radius: 15px;
+    margin-left: 60px;
+    margin-top: 5px;
+    font-weight: 200;
+}
+
+input[type=submit]{
+width: 50%;
+background: lightskyblue;
+color: white;
+font-size: 13px;
+border-radius: 5px;
+padding: 2px 2px;
+margin: 10px 0;
+box-sizing: border-box;
+}
+
+.button{
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    width: 50%;
+}
+
+input[type=submit]:hover{
+    background-color: black;
+}
+
+.first{
+    font-family: sans-serif;
+    color: rgb(15, 15, 14);
+    margin-left: 60px;
+    padding: 20px 0;
+    margin-top: 20px;
+
+}
+
+/*Styling the labels*/
+label{
+    font-family: sans-serif;
+    color: black;
+    font-size: 20px;
+}
+
+/*Table Styling*/
+.myT{
+    place-items: center;
+    margin: 0 0%;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 100px;
+    padding-top: 25px;
+}
+
+table{
+    width: 600px;
+    box-shadow: -1px 12px 12px -6px rgba(0, 0, 0, 0.5);
+
+}
+th,td{
+    padding: 5px;
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+td{
+    font-size: 15px;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+th{
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}
+tr:nth-child(odd){
+    background-color: lightblue;
+}
+
+/*Styling my Cards*/
+
+.card-img-top{
+    border-radius: 30px;
+    padding: 20px;
+}
+
+.card {
+    border-radius: 30px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+}
+
+/* Styling a PopUP when deleting an item*/
+.container2{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.popup{
+    width: 400px;
+    background: white;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -40%) scale(0);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform 1s, top 1s;
+}
+
+.open-popup{
+    visibility: visible;
+    top: 80%;
+    transform: translate(-50%, -40%) scale(1);
+}
+
+.popup img{
+    width: 50px;
+    margin-top: -20px;
+    border-radius: 50%;
+    box-shadow: 0 1px 0.5px black;
+
+}
+
+.popup h2{
+    font-size: 30px;
+    font-weight: 500;
+    margin: 30px 0 20px;
+}
+
+.popup button{
+    width: 30%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: hsl(1, 84%, 63%);
+    color: white;
+    border: 0;
+    outline: none;
+    font-size: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+/*Styling the view, delete, and action buttons*/
+.action button{
+
+    font-weight: 400;
+    font-size: 15px;
+    background: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+/*Styling register form*/
+.center{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    width: 350px;
+    background: white;
+    border-radius: 10px;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.center h1{
+    text-align: center;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid silver;
+}
+
+.center form{
+    padding: 0 20px 0 0;
+    box-sizing: border-box;
+}
+
+form .input-field{
+    position: relative;
+    margin: 20px 0;
+}
+.input-field input {
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.input-field ::placeholder{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.input-field span::before{
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #2691d9;
+}
+
+.forgot-pass {
+    margin: -5px 0 20px 5px;
+    color: #a6a6a6;
+    cursor: pointer;
+}
+
+.forgot-pass:hover{
+    text-decoration: underline;
+}
+
+.center input[type='submit']{
+    width: 100%;
+    height: 40px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+}
+.center input[type='submit']:hover{
+    border-color: #2691d9;
+    transition: .5s;
+}
+.signup{
+    margin: 30px 0;
+    text-align: center;
+    font-size: 17px;
+    color: #666666;
+}
+
+.signup a{
+    color: #2691d9;
+    text-decoration: none;
+}
+
+.center i{
+    position: absolute;
+    top: 40%;
+    transform: translate(-50%);
+    margin: 0 0 5px 0;
+}
+
+    /*Styling Password does not match*/
+.center .alert span{
+  position: absolute;
+  top: 50%;
+  transform: translate(5%);
+
+}
+
+.center .alert .errorIcon{
+    color: red;
+    display: none;
+    margin-top: -10px;
+}
+
+.center .alert .text{
+    color: #a6a6a6;
+    margin-top: -10px;
+    margin-left: -25px;
+}
+
+.center form .error-text{
+    color: #883E46;
+    position: absolute;
+    top: 60%;
+    transform: translate(4%);
+    margin-top: 10px;
+    background: #F8D7DA;
+    padding: 0 20px;
+    display: none;
+}
+
+.center form .error-text{
+    color: #883E46;
+    position: absolute;
+    top: 60%;
+    transform: translate(4%);
+    margin-top: 10px;
+    background: #F8D7DA;
+    padding: 0 20px;
+}
+
+
+/*Styling User Profile Account*/
+.sub-menu-wrap{
+    position: absolute;
+    top: 100%;
+    right: 2%;
+    width: 250px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+
+.sub-menu-wrap.open-menu{
+    max-height: 400px;
+}
+
+.sub-menu{
+    background: white;
+    padding: 20px;
+    margin: 10px;
+}
+
+.user-info{
+    display: flex;
+    align-items: center;
+}
+
+.user-info h6{
+    font-weight: 100;
+    font-family: sans-serif;
+    font-size: 15px;
+}
+
+.sub-menu hr{
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: black;
+    margin: 15px 0 10px;
+}
+
+.user-info img{
+    width: 25px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 15px;
+    top: 10%;
+}
+.container-fluid img{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 40px;
+    top: 10%;
+}
+.sub-menu-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 12px 0;
+}
+
+.sub-menu-link p {
+    width: 100%;
+    padding: 10px 0px 0px 15px;
+   
+}
+
+.user-pic{
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+
+
+
