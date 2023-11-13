@@ -52,7 +52,7 @@
         </div>
         <div class="input-field">
             {%if form.confirm_password.errors%}
-            {{form.confirm_password(placeholder='Create password', id='createPass', class="is-invalid")}} 
+            {{form.confirm_password(placeholder='Confirm password', id='confirmPass', class="is-invalid")}} 
             
             <div class="invalid-feedback">
                 {% for error in form.confirm_password.errors %}
@@ -75,6 +75,6 @@
     </form>
 </div>
 
-<script src="/static/js/app.js"></script>
+<script src="{{url_for('static', filename='js/app.js')}} "></script>
 
 

@@ -362,6 +362,8 @@ form .input-field{
     top: 40%;
     transform: translate(-50%);
     margin: 0 0 5px 0;
+    cursor: pointer;
+    font-size: 13px;
 }
 
     /*Styling Password does not match*/

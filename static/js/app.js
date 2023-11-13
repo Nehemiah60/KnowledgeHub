@@ -32,19 +32,6 @@ showPassword.addEventListener('click', ()=>{
 
 });
 
-//Ensuring password match
-
-function verifyPassword(){
-let pass1     = document.getElementById('createPass').value;
-let pass2     = document.getElementById('confirmPass').value;
-
-if (pass1 === pass2){
-    document.getElementById('message').innerHTML='Success';
-    document.getElementById('message').style.color='green';
-}
-
-
-}
 
 //User profile submenu dropdown
 
