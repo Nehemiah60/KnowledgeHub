@@ -43,18 +43,17 @@
     </form>
 </div>
 
-<script >
+<script>
+const passwordIcon    = document.querySelector('.show');
+const createPassword  = document.querySelector('#createPass');
 
-const showPassword    = document.querySelector('.show');
-const createPassword  = document.querySelector('#createPass')
-
-showPassword.addEventListener('click', ()=>{
-    if ((createPassword.type === 'password')){
+passwordIcon.addEventListener('click', ()=>{
+    if (createPassword.type === 'password'){
         createPassword.type='text';
-        showPassword.classList.replace('fa-eye-slash' ,'fa-eye');
+        passwordIcon.classList.replace('fa-eye-slash' ,'fa-eye');
     } else{
         createPassword.type= 'password';
-        showPassword.classList.replace('fa-eye' ,'fa-eye-slash')
+        passwordIcon.classList.replace('fa-eye' ,'fa-eye-slash')
     }
 });
 </script>
