@@ -37,3 +37,21 @@ class LoginForm(FlaskForm):
     email            = StringField('Email', validators=[DataRequired(), Email()])
     password         = PasswordField('Password', validators=[DataRequired()])
     submit           = SubmitField('Login')
+
+class ProfileUpdateForm(FlaskForm):
+    username         = StringField('First Name', validators=[DataRequired(), Length(min=2, max=20)])
+    email            = StringField('Email', validators=[DataRequired(), Email()])
+    submit           = SubmitField('Update')
+
+    def validate_username(self, username):
+        if username.data != current_user.username: # Ensure the username to be updated is not the same as the current username
+            user = User.query.filter_by(username=username.data).first()
+            if user:
+                raise ValidationError("A user with that username already exists. Choose a different username")
+
+    def validate_email(self, email):
+        if email.data != current_user.email: # Ensure the email to be updated is not equal to the same as current user email
+            user = User.query.filter_by(email=email.data).first()
+            if user:
+                raise ValidationError("A user with that email already exists. Choose a different email")
+
