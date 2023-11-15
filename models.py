@@ -30,6 +30,7 @@ class User(UserMixin, db.Model):
     id            = db.Column(db.Integer, primary_key=True)
     username      = db.Column(db.String(100), index=True, unique=True)
     email         = db.Column(db.String(100), index=True, unique=True)
+    image_file    = db.Column(db.String(100), nullable=False, default='default.jpg')
     user_password = db.Column(db.String(100))
     joined_date   = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -37,10 +38,10 @@ class User(UserMixin, db.Model):
         return f"User('{self.username}', '{self.email}')"
 
 
-class Course(db.Model):
-    id            = db.Column(db.Integer, primary_key=True)
-    title         = db.Column(db.String(100), nullable=False)
-    description   = db.Column(db.Text, nullable=False)
+# class Course(db.Model):
+#     id            = db.Column(db.Integer, primary_key=True)
+#     title         = db.Column(db.String(100), nullable=False)
+#     description   = db.Column(db.Text, nullable=False)
 
 
     

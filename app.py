@@ -69,7 +69,7 @@ def user_profile():
 
     return render_template('profile.html', form=form, image_file=image_file)
 
-
+#courses page
     
 
 #Add student
