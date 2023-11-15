@@ -55,11 +55,22 @@ def logout():
     return redirect(url_for('index'))
       
 #user profile
-@app.route('/profile')
+@app.route('/profile', methods=["GET", "POST"])
 @login_required
 def user_profile():
-        user = User.query.all()
-        return render_template('profile.html', user=user)
+    form = ProfileUpdateForm(request.form)
+    image_file = url_for('static', filename='images/' + current_user.image_file)
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.email    = form.email.data
+        db.session.commit()
+        flash('Your details are updated successfully', 'success')
+        return redirect(url_for('user_profile'))
+
+    return render_template('profile.html', form=form, image_file=image_file)
+
+
+    
 
 #Add student
 @app.route('/students/add', methods=['GET','POST'])
