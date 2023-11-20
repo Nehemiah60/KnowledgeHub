@@ -3,6 +3,7 @@ from fileinput import filename
 from models import *
 from forms import *
 import os
+import secrets
 
 
 @app.route('/')
@@ -53,14 +54,22 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
-      
+
+#Function to save a picture image in our db
+
+
+    
 #user profile
 @app.route('/profile', methods=["GET", "POST"])
 @login_required
 def user_profile():
-    form = ProfileUpdateForm(request.form)
+    form = ProfileUpdateForm()
     image_file = url_for('static', filename='images/' + current_user.image_file)
     if form.validate_on_submit():
+        if form.picture.data:
+            picture_file = save_profpic(form.picture.data)
+            current_user.image_file = picture_file
+
         current_user.username = form.username.data
         current_user.email    = form.email.data
         db.session.commit()

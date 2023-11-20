@@ -13,7 +13,7 @@ class Students(db.Model):
     email       = db.Column(db.String(100), unique=True, index=True)
     image       = db.Column(db.String(), nullable=True)
     fee_paid    = db.Column(db.Integer, nullable=False)
-    
+   
     def __repr__(self):
         return f"Students('{self.first_name}', '{self.second_name}', '{self.email}') "
     
