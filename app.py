@@ -4,6 +4,7 @@ from models import *
 from forms import *
 import os
 import secrets
+from PIL import Image
 
 
 @app.route('/')
@@ -57,11 +58,16 @@ def logout():
 
 #Function to save a picture image in our db
 def save_profpic(form_picture):
-    random_hex = secrets.token_hex(8)
-    f_name, f_ext = os.path.splitext(form_picture.filename)
-    picture_fn = random_hex + f_ext
-    picture_path = os.path.join(app.root_path, 'static/images', picture_fn)
-    form_picture.save(picture_path)
+    random_hex      = secrets.token_hex(8)
+    f_name, f_ext   = os.path.splitext(form_picture.filename)
+    picture_fn      = random_hex + f_ext
+    picture_path    = os.path.join(app.root_path, 'static/images', picture_fn)
+
+    output_size     = (150,150)  
+    my_image        = Image.open(form_picture)
+    my_image.thumbnail(output_size)
+    my_image.save(picture_path)
+
     return picture_fn
     
 #user profile
