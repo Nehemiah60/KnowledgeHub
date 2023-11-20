@@ -45,15 +45,17 @@
             <div class="row text-center">
               <div class="col-lg-4 ">
                 <div class=" themeShadow p-lg-4 p-4">
-                    <h4> Personal Details</h4>
+                    <h5> <b>Personal Details</b></h5>
                     <img src="{{image_file}}" alt="" class="profImg">
                   
-                      <h6 class="mt-4 p-1 p-h6">Username: {{current_user.username}}</h6>
+                      <h6 class="mt-4 p-1 p-h6">{{current_user.username.capitalize()}}</h6>
                       <h6 class="mt-2  p-h6">Email: {{current_user.email}}</h6>
                       <hr class="p-hr">
+                     <a href="" class="float-start"> Update</a>
+                      <h5 class="mt-5"> <b>Update Details</b></h5>
 
-                      <h4 class="mt-5"> Update Details</h4>
-                  <form action="{{ url_for('user_profile') }}" method="POST" >
+<!--UPDATE PROFILE FORM-->
+                  <form action="{{ url_for('user_profile') }}" method="POST" enctype="multipart/form-data">
                     {{ form.hidden_tag() }}
                     <div class="input-field">
                         {%if form.username.errors %}
@@ -79,11 +81,23 @@
                              <span>{{error}} </span>
                             {%endfor%}
                         </div>
+
                         {%else%}
                         {{form.email(placeholder='Email')}}
                         <span></span>
                         {% endif %}
-                         
+                    </div>
+
+                    <div class="input-field">
+                    
+                      {{ form.picture() }}
+
+                      {%if form.picture.errors%}
+                      {%for error in form.picture.errors%}
+                      <p class="text-danger">{{ error }}</p>
+                       
+                      {%endfor%}
+                      {%endif%}
                     </div>
                 
                     {{form.submit()}}
