@@ -56,7 +56,6 @@ def logout():
     return redirect(url_for('index'))
 
 #Function to save a picture image in our db
-
 def save_profpic(form_picture):
     random_hex = secrets.token_hex(8)
     f_name, f_ext = os.path.splitext(form_picture.filename)
