@@ -38,10 +38,20 @@ class User(UserMixin, db.Model):
         return f"User('{self.username}', '{self.email}')"
 
 
-# class Course(db.Model):
-#     id            = db.Column(db.Integer, primary_key=True)
-#     title         = db.Column(db.String(100), nullable=False)
-#     description   = db.Column(db.Text, nullable=False)
+class Course(db.Model):
+    __tablename__ = 'course'
+    id            = db.Column(db.Integer, primary_key=True)
+    title         = db.Column(db.String(100), nullable=False)
+    description   = db.Column(db.Text, nullable=False)
+    modules       = db.relationship('Module', backref='courses', lazy=True)
+
+class Module(db.Model):
+    __tablename__ = 'module'
+    id            = db.Column(db.Integer, primary_key=True)
+    title         = db.Column(db.String(100), nullable=False)
+    content       = db.Column(db.Text, nullable=False)
+    course_id     = db.Column(db.Integer, db.ForeignKey('course.id'), nullable=False)
+    
 
 
     

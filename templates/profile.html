@@ -17,7 +17,7 @@
                   <p>Edit Profile</p>
                   <span>></span>
               </a>
-              <a href="" class="sub-menu-link">
+              <a href=" {{ url_for('courses') }} " class="sub-menu-link">
                   <i class="fa-solid fa-cart-shopping"></i>
                   <p>My Courses</p>
                   <span>></span>
@@ -39,7 +39,7 @@
       </div>
       </div>
     </nav>
-   
+ 
     <section class="section-spacing-profile border-top">
         <div class="container">
             <div class="row text-center">
@@ -49,9 +49,9 @@
                     <img src="{{image_file}}" alt="" class="profImg">
                   
                       <h6 class="mt-4 p-1 p-h6">{{current_user.username.capitalize()}}</h6>
-                      <h6 class="mt-2  p-h6">Email: {{current_user.email}}</h6>
+                      <h6 class="mt-2  p-h6">{{current_user.email}}</h6>
                       <hr class="p-hr">
-                     <a href="" class="float-start"> Update</a>
+                     
                       <h5 class="mt-5"> <b>Update Details</b></h5>
 
 <!--UPDATE PROFILE FORM-->
@@ -147,9 +147,6 @@
 
               </div>
               </div>
-
-              
-
            </div>
 
            
