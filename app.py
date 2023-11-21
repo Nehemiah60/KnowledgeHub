@@ -90,7 +90,15 @@ def user_profile():
     return render_template('profile.html', form=form, image_file=image_file)
 
 #courses page
-    
+@app.route('/courses', methods=['POST', 'GET']) 
+def courses():
+    courses = Course.query.all()
+    return render_template('courses.html',  courses=courses)
+
+
+
+
+
 
 #Add student
 @app.route('/students/add', methods=['GET','POST'])

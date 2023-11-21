@@ -1,107 +1,104 @@
-<section class="section-spacing-profile border-top">
-    <div class="container">
-        <div class="row text-center">
-          <div class="col-lg-4 ">
-            <div class=" themeShadow p-lg-4 p-4">
-                <h4> Personal Details</h4>
-                <img src="{{image_file}}" alt="" class="profImg">
+{%extends 'nav.html'%}
+
+
+{%block content%}
+
+          <img src="{{image_file}}" alt="" class="user-pic" onclick="toggleMenu()">
+        </div>
+        <div class="sub-menu-wrap" id="subMenu">
+          <div class="sub-menu">
+              <div class="user-info">
+                  <img src="{{ image_file }}" alt="" >
+                  <h6>{{ current_user.username }}</h6>
+              </div>
+              <hr>
+              <a href="" class="sub-menu-link">
+                  <i class="fa-regular fa-pen-to-square"></i>
+                  <p>Edit Profile</p>
+                  <span>></span>
+              </a>
+              <a href=" {{url_for('courses') }} " class="sub-menu-link">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <p>My Courses</p>
+                  <span>></span>
+              </a>
+              <a href="" class="sub-menu-link">
+                  <i class="fa-solid fa-gears"></i>
+                  <p>Settings</p>
+                  <span>></span>
+              </a>
+              {% if current_user.is_authenticated %}
+              <a href="{{url_for('logout')}}" class="sub-menu-link">
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                  <p>Sign out</p>
+                  <span>></span>
+              </a>
+              {%endif%}
               
-                  <h6 class="mt-4 p-1 p-h6">Username: {{current_user.username}}</h6>
-                  <h6 class="mt-2  p-h6">Email: {{current_user.email}}</h6>
-                  <hr class="p-hr">
-
-                  <h4 class="mt-5"> Update Details</h4>
-              <form action="{{ url_for('user_profile') }}" method="POST" >
-                {{ form.hidden_tag() }}
-                <div class="input-field">
-                    {%if form.username.errors %}
-                    {{form.username(class='is-invalid', placeholder="Username" )}}
-        
-                    <div class="invalid-feedback">
-                        {% for error in form.username.errors %}
-                        <span>{{error}}</span>
-                        {%endfor%}
-                    </div>
-                    {% else %}
-                    {{form.username(placeholder="Username")}}
-                    <span></span>
-                    {% endif %}
-                </div>
-                
-                <div class="input-field">
-                    {% if form.email.errors %}
-                    {{ form.email(class="is-invalid", placeholder="Email") }}
-        
-                    <div class="invalid-feedback">
-                        {% for error in form.email.errors %}
-                         <span>{{error}} </span>
-                        {%endfor%}
-                    </div>
-                    {%else%}
-                    {{form.email(placeholder='Email')}}
-                    <span></span>
-                    {% endif %}
-                     
-                </div>
-            
-                {{form.submit()}}
-  
-            </form>
           </div>
-          </div>
-          
-          <div class="col-lg-8 mt-3">
-             <div class="text-start mt-2 prof-details mb-2"><h3 >Experience</h3></div>
-            <div class="prof-details themeShadow p-lg-4 mt-3">
-              <div class="">
-                <h5 class="text-start">Projects</h5>
-              </div>
-              <div class="prof-content ">
-                <p class="about-text mt-3 mb-2 text-start p-3"> <b>Showcase your Skills</b> <br>
-                Learn the nitty gritty of development. 
-                Create scalable web solutions <br> to solve real world issues</p>
-              </div>
-             
-            
-            </div>
+      </div>
+      </div>
+    </nav>
 
-            <div class="text-start  prof-details pt-5 pb-3"><h3 >Education</h3></div>
-            <div class="prof-details themeShadow p-lg-4 mt-3">
-              <div class="">
-                <h5 class="text-start">Projects</h5>
-              </div>
-              <div class="prof-content ">
-                <p class="about-text mt-3 mb-2 text-start p-3"> <b>Showcase your Skills</b> <br>
-                Learn the nitty gritty of development. 
-                Create scalable web solutions <br> to solve real world issues</p>
-              </div>
-            </div>
 
-            <div class="text-start  prof-details pt-5 pb-3"><h3 >Work History</h3></div>
-            <div class="prof-details themeShadow p-lg-4 mt-3">
-              <div class="">
-                <h5 class="text-start">Projects</h5>
-              </div>
-              <div class="prof-content ">
-                <p class="about-text mt-3 mb-2 text-start p-3"> <b>Showcase your Skills</b> <br>
-                Learn the nitty gritty of development. 
-                Create scalable web solutions <br> to solve real world issues</p>
-              </div>
-            </div>
-
-          </div>
-          </div>
-
-          
-
-       </div>
-
-       
-
-       
+    <section class="section-spacing-profile border-top">
       
-      
-       <div>
+      <div class="container">
+          <div class="row text-center">
+            <div class="col-lg-10 mt-3">
+              <div class="my-courses">
+              <h1 class="text-start prof-details mb-5"> My Programs </h1>
+              <a href="" class="btn btn-brand me-2" > In Progress</a>
+              <a href="" class="btn btn-brand  ms-2"> Completed </a>
+              <hr class="prof-details">
+
+              <div class="prof-details themeShadow p-lg-4 mt-5">
+                {%for course in courses%}
+                <div class="course-details">
+                  <h4 class="text-start">{{ course.title }} </h4>
+                  <a href="" class="btn btn-brand  me-2"> Overview</a>
+                  <a href="" class="btn btn-brand  ms-2"> Continue </a>
+                </div>
+                <div class="prof-content ">
+                  <p class="about-text mt-3 mb-2 text-start p-3"> {{ course.description }}</p>
+          
+                </div>
+                {%endfor%}
+               
+              
+              </div>
+
+              <div class="text-start  prof-details pt-5 pb-3"><h3 >Education</h3></div>
+              <div class="prof-details themeShadow p-lg-4 mt-3">
+                <div class="">
+                  <h5 class="text-start">Projects</h5>
+                </div>
+                <div class="prof-content ">
+                  <p class="about-text mt-3 mb-2 text-start p-3"> <b>Showcase your Skills</b> <br>
+                  Learn the nitty gritty of development. 
+                  Create scalable web solutions <br> to solve real world issues</p>
+                </div>
+              </div>
   
-         
-  </section>
+              <div class="text-start  prof-details pt-5 pb-3"><h3 >Work History</h3></div>
+              <div class="prof-details themeShadow p-lg-4 mt-3">
+                <div class="">
+                  <h5 class="text-start">Projects</h5>
+                </div>
+                <div class="prof-content ">
+                  <p class="about-text mt-3 mb-2 text-start p-3"> <b>Showcase your Skills</b> <br>
+                  Learn the nitty gritty of development. 
+                  Create scalable web solutions <br> to solve real world issues</p>
+                </div>
+              </div>
+
+            </div>
+            </div>
+          </div>
+         </div>
+         <div>
+    
+           
+    </section>
+ {%endblock%}
+
