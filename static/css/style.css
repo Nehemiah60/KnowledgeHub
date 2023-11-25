@@ -1,3 +1,9 @@
+
+body{
+    background: whitesmoke; 
+    overflow: hidden;
+}
+
 .navbar-nav .nav-link{
     font-weight: 800;
     color: var(black);
@@ -7,9 +13,6 @@
     padding: 0 0 0 10px;
 }
 
-body{
-    background: whitesmoke;
-}
 
 a{
     text-decoration: none;
@@ -560,6 +563,29 @@ width: 13%;
     height: fit-content;
 }
 
+/*STYLING MODULES PAGE*/
+.module-details {
+    cursor: pointer;
+}
+
+.module-details i{
+    margin:-3.4% 0 0 94%;
+    width: 10%;
+    height: fit-content;
+    font-size: 25px; 
+}
+
+.accordion {
+    max-height: 0;
+    visibility: hidden;
+    transition: max-height 0.3s ease;
+    cursor: pointer;
+}
 
 
 
+.activeAccord .accordion {
+    max-height: 400px; /* or any other desired height */
+    visibility: visible;
+    cursor: pointer;
+}

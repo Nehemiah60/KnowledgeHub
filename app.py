@@ -95,8 +95,12 @@ def courses():
     courses = Course.query.all()
     return render_template('courses.html',  courses=courses)
 
-
-
+@app.route('/course_details' , methods=['POST', 'GET'])
+@login_required
+def course_details():
+    image_file = url_for('static', filename='images/' + current_user.image_file)
+    
+    return render_template('course_details.html', image_file=image_file)
 
 
 
