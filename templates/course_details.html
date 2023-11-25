@@ -1,0 +1,80 @@
+{%extends 'nav.html'%}
+
+
+{%block content%}
+
+          <img src="{{image_file}}" alt="" class="user-pic" onclick="toggleMenu()">
+        </div>
+        <div class="sub-menu-wrap" id="subMenu">
+          <div class="sub-menu">
+              <div class="user-info">
+                  <img src="{{ image_file }}" alt="" >
+                  <h6>{{ current_user.username }}</h6>
+              </div>
+              <hr>
+              <a href="" class="sub-menu-link">
+                  <i class="fa-regular fa-pen-to-square"></i>
+                  <p>Edit Profile</p>
+                  <span>></span>
+              </a>
+              <a href=" {{ url_for('courses') }} " class="sub-menu-link">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <p>My Courses</p>
+                  <span>></span>
+              </a>
+              <a href="" class="sub-menu-link">
+                  <i class="fa-solid fa-gears"></i>
+                  <p>Settings</p>
+                  <span>></span>
+              </a>
+              {% if current_user.is_authenticated %}
+              <a href="{{url_for('logout')}}" class="sub-menu-link">
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                  <p>Sign out</p>
+                  <span>></span>
+              </a>
+              {%endif%}
+              
+          </div>
+      </div>
+      </div>
+    </nav>
+
+    <section class="section-spacing-profile border-top">
+      
+        <div class="container">
+            <div class="row text-center">
+              <div class="col-lg-10 mt-3">
+                <div class="my-courses">
+                <h1 class="text-start prof-details mb-5"> My Programs </h1>
+                <a href="" class="btn btn-brand me-2" > In Progress</a>
+                <a href="" class="btn btn-brand  ms-2"> Completed </a>
+                <hr class="prof-details">
+  
+                <div class="prof-details themeShadow p-lg-3 mt-5">
+                
+                  <div class="module-details">
+                    <h4 class="text-start"> Introduction to the program</h4>
+                    <i class="fa-solid fa-caret-down me-2"></i>
+                  </div>
+
+                  <div class="prof-content accordion">
+                    <p class="about-text mt-3 mb-2 text-start p-3"> Lorem ipsum, dolor sit amet consectetur adi
+                        ksjskjdskjdddddddddddddddd
+                        skdjksssssssssssssssssssssssssssssssssssssssssssss
+                        ksjddddddddddddddddd
+                    </p>
+                  </div>
+
+                  <div class="prof-content accordion">
+                    <p class="about-text mt-3 mb-2 text-start p-3"> Lorem ipsum, dolor sit amet consectetur adi
+                        ksjskjdskjdddddddddddddddd
+                        skdjksssssssssssssssssssssssssssssssssssssssssssss
+                        ksjddddddddddddddddd
+                    </p>
+                  </div>
+                  
+                </div>
+
+{%endblock%}
+
