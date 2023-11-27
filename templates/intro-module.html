@@ -1,0 +1,90 @@
+{%extends 'nav.html'%}
+
+
+{%block content%}
+
+          <img src="{{image_file}}" alt="" class="user-pic" onclick="toggleMenu()">
+        </div>
+        <div class="sub-menu-wrap" id="subMenu">
+          <div class="sub-menu">
+              <div class="user-info">
+                  <img src="{{ image_file }}" alt="" >
+                  <h6>{{ current_user.username }}</h6>
+              </div>
+              <hr>
+              <a href=" {{url_for('user_profile') }} " class="sub-menu-link">
+                  <i class="fa-regular fa-pen-to-square"></i>
+                  <p>Edit Profile</p>
+                  <span>></span>
+              </a>
+              <a href=" {{ url_for('courses') }} " class="sub-menu-link">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <p>My Courses</p>
+                  <span>></span>
+              </a>
+              <a href="" class="sub-menu-link">
+                  <i class="fa-solid fa-gears"></i>
+                  <p>Settings</p>
+                  <span>></span>
+              </a>
+              {% if current_user.is_authenticated %}
+              <a href="{{url_for('logout')}}" class="sub-menu-link">
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                  <p>Sign out</p>
+                  <span>></span>
+              </a>
+              {%endif%}
+              
+          </div>
+      </div>
+      </div>
+    </nav>
+
+<nav class="sidebar">
+<header>
+    <div class="image-text">
+        <span class="image">
+            <img src=" {{url_for('static', filename='images/nehemiah.jpg')}}  " alt="">
+        </span>
+        <div class="text header-text">
+            <span class="module-name"> Introduction to the Program</span>
+
+        </div>
+    </div>
+    <i class="fa-solid fa-chevron-right toggleDrop"></i>
+</header>
+<div class="module-menu-bar">
+    <div class="module-menu">
+        <li class="search-box">
+            <i class="fa-solid fa-magnifying-glass iconS"></i>
+            <input type="search" placeholder="Search...">
+        </li>
+        
+        <ul class="module-menu-links">
+            <li class="module-nav-links">
+                <a href="">
+                    <span class="text nav-text ms-4"> About the Program</span>
+                </a>
+            </li>
+            <li class="module-nav-links">
+                <a href="">
+                    <span class="text nav-text ms-4"> Program Duration</span>
+                </a>
+            </li>
+            <li class="module-nav-links">
+                <a href="">
+                    <span class="text nav-text ms-4"> Join Your Community</span>
+                </a>
+            </li>
+            <li class="module-nav-links">
+                <a href="">
+                    <span class="text nav-text ms-4"> Content Copyright</span>
+                </a>
+            </li>
+        </ul>
+       
+    </div>
+</div>
+</nav>
+
+{%endblock%}
