@@ -102,6 +102,12 @@ def course_details():
     
     return render_template('course_details.html', image_file=image_file)
 
+#modules page
+@app.route('/intro-module', methods=['POST', 'GET'])
+def modules():
+    image_file = url_for('static', filename='images/' + current_user.image_file)
+    return render_template('intro-module.html', image_file=image_file)
+
 
 
 #Add student

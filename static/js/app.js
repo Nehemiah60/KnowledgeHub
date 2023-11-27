@@ -57,6 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
         accordionContent.parentElement.classList.toggle('activeAccord');
 
         // Optionally, you can scroll to the top of the accordion when it's clicked
-        //accordionTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
     });
 });

@@ -12,7 +12,7 @@
                   <h6>{{ current_user.username }}</h6>
               </div>
               <hr>
-              <a href="" class="sub-menu-link">
+              <a href=" {{url_for('user_profile') }} " class="sub-menu-link">
                   <i class="fa-regular fa-pen-to-square"></i>
                   <p>Edit Profile</p>
                   <span>></span>
@@ -51,7 +51,7 @@
                 <a href="" class="btn btn-brand  ms-2"> Completed </a>
                 <hr class="prof-details">
   
-                <div class="prof-details themeShadow p-lg-3 mt-5">
+                <div class="prof-details themeShadow p-lg-4 mt-5">
                 
                   <div class="module-details">
                     <h4 class="text-start"> Introduction to the program</h4>
@@ -59,12 +59,16 @@
                   </div>
 
                   <div class="prof-content accordion">
-                    <p class="about-text mt-3 mb-2 text-start p-3"> Lorem ipsum, dolor sit amet consectetur adi
+
+                    <a href=" {{ url_for('modules') }} ">
+                      <p class="about-text mt-3 mb-2 text-start p-3"> Lorem ipsum, dolor sit amet consectetur adi
                         ksjskjdskjdddddddddddddddd
                         skdjksssssssssssssssssssssssssssssssssssssssssssss
                         ksjddddddddddddddddd
                     </p>
-                  </div>
+                    </a>
+                   
+                  </div> <br>
 
                   <div class="prof-content accordion">
                     <p class="about-text mt-3 mb-2 text-start p-3"> Lorem ipsum, dolor sit amet consectetur adi
@@ -74,7 +78,9 @@
                     </p>
                   </div>
                   
+                  
                 </div>
+                
 
 {%endblock%}
 
