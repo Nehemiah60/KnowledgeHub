@@ -60,3 +60,39 @@ document.addEventListener('DOMContentLoaded', function() {
         
     });
 });
+
+
+// Toggling a SWITCH TO CHANGE MODE
+document.addEventListener('DOMContentLoaded', function () {
+    const body = document.querySelector('body');
+    const modeSwitch = document.querySelector('.toggle-switch');
+    const modeText = document.querySelector('.mode-text');
+  
+    // Check if dark mode preference is stored
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+  
+    // Apply dark mode if the preference is true
+    if (isDarkMode) {
+      body.classList.add('dark');
+      modeText.textContent = 'Light Mode';
+    }
+  
+    // Toggle dark mode on switch click
+    modeSwitch.addEventListener('click', function () {
+      body.classList.toggle('dark');
+      const isDarkMode = body.classList.contains('dark');
+  
+      // Update dark mode preference in localStorage
+      localStorage.setItem('darkMode', isDarkMode);
+  
+      if (isDarkMode) {
+        modeText.textContent = 'Light Mode';
+      } else {
+        modeText.textContent = 'Dark Mode';
+      }
+    });
+  });
+
+  //Toggle the SIDEBAR
+  
+
