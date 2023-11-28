@@ -2,6 +2,7 @@
 body{
     background: whitesmoke; 
     overflow: hidden;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .navbar-nav .nav-link{
@@ -592,7 +593,7 @@ width: 13%;
 /*** REUSABLE CSS FOR THE SIDEBAR****/
 .sidebar .text{
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .sidebar .image{
@@ -611,11 +612,12 @@ width: 13%;
     top: 50;
     left: 0;
     height: 100%;
-    width: 280px;
+    width: 250px;
     padding: 10px 14px;
-    background: #999;
+    background: #adadad;
     
 }
+
 .sidebar header{
     position: relative;
 }
@@ -632,6 +634,7 @@ header .image-text .header-text{
 .header-text .module-name{
 font-weight: 600;
 }
+
 
 .sidebar header .toggleDrop{
 position: absolute;
@@ -671,8 +674,7 @@ font-size: 12px;
 }
 
 .sidebar .search-box{
-    background: rgb(211, 211, 211);
-   
+  color: #666666;
 }
 
 .sidebar input{
@@ -680,8 +682,8 @@ height: 100%;
 width: 100%;
 outline: none;
 border: none;
-background: lightgrey;
 border-radius: 10px;
+background: #adadad;
 }
 
 .sidebar li a{
@@ -696,4 +698,88 @@ border-radius: 10px;
 .sidebar li a:hover{
 background: rgba(0, 0, 255, 0.459);
 
+}
+
+.sidebar .module-menu-bar{
+
+    height: calc(100%-50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.module-menu-bar .mode{
+    background: #adadad;
+}
+
+.module-menu-bar .mode i{
+    position: absolute;
+} 
+.module-menu-bar .mode .moon-sun{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.module-menu-bar .mode i.sun{
+    opacity: 0;
+}
+.module-menu-bar .mode .toggle-switch{
+    display: flex;
+    height: 100%;
+    min-width: 60px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.toggle-switch .switch{
+    position: relative;
+    height: 20px;
+    width: 40px;
+    border-radius: 25px;
+    background: #adadad;
+}
+
+.switch::before{
+    content: "";
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background: white; 
+}
+
+body.dark .switch::before{
+left: 20px;
+}
+
+.dark {
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+.dark .sidebar {
+    background-color: #333; /* Adjust the background color for dark mode */
+    color: #ffffff; /* Adjust the text color for dark mode */
+  }
+
+.dark .search-box{
+    background: #a6a6a6;
+  }
+.dark input{
+    background: #a6a6a6;  
+}
+
+.dark .mode{
+background: #a6a6a6;
+}
+.dark li .text{
+    color: white;
+}
+
+.dark .iconS{
+    color: wheat;
 }
