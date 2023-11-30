@@ -67,12 +67,12 @@
                 </a>
             </li>
             <li class="module-nav-links">
-                <a href="">
+                <a href=" {{ url_for('program_duration') }} ">
                     <span class="text nav-text ms-4"> Program Duration</span>
                 </a>
             </li>
             <li class="module-nav-links">
-                <a href="">
+                <a href=" {{url_for('join_community') }} ">
                     <span class="text nav-text ms-4"> Join Your Community</span>
                 </a>
             </li>
@@ -103,5 +103,56 @@
     </div>
 </div>
 </nav>
+
+<div class="col-lg-8 about-program">
+    <div class="text-start mt-2 prof-details mb-2"><h1 >About the Program</h1>
+    </div>
+   <div class="prof-details  p-lg-4 mt-3 ">
+ 
+      <h1> Welcome to Python Programming</h1>
+      <br>
+      <p>We’re so excited to have you join us in this program! Along this journey, 
+        you’ll learn indispensable technical skills that are necessary to have in today’s tech industry.</p>
+    
+   <p>
+    <b>
+    Technical Content:</b> This contains the technical content of the track you chose. 
+    All of this content is available in the Udacity classroom for you to access during the program.
+   </p>
+   
+   <p>
+    <b>
+    Certification Assessment:</b> Passing the certification assessment is the only way to get your Certificate of Completion for this track.
+    You’ll find all the details related to this topic in the “Certification Assessment” part in this classroom.
+   </p>
+   <br>
+   <p> This is going to be a fun ride!</p>
+   </div>
+
+   <div class="text-start mt-2 prof-details mb-2"><h1 >About the Program</h1>
+   </div>
+  <div class="prof-details  p-lg-4 mt-3 ">
+
+     <h1> Welcome to Python Programming</h1>
+     <br>
+     <p>We’re so excited to have you join us in this program! Along this journey, 
+       you’ll learn indispensable technical skills that are necessary to have in today’s tech industry.</p>
+   
+  <p>
+   <b>
+   Technical Content:</b> This contains the technical content of the track you chose. 
+   All of this content is available in the Udacity classroom for you to access during the program.
+  </p>
+  
+  <p>
+   <b>
+   Certification Assessment:</b> Passing the certification assessment is the only way to get your Certificate of Completion for this track.
+   You’ll find all the details related to this topic in the “Certification Assessment” part in this classroom.
+  </p>
+  <br>
+  <p> This is going to be a fun ride!</p>
+  </div>
+   
+</section>
 
 {%endblock%}

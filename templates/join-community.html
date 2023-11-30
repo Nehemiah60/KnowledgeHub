@@ -67,12 +67,12 @@
                 </a>
             </li>
             <li class="module-nav-links">
-                <a href="">
+                <a href=" {{ url_for('program_duration') }} ">
                     <span class="text nav-text ms-4"> Program Duration</span>
                 </a>
             </li>
             <li class="module-nav-links">
-                <a href="">
+                <a href=" {{url_for('join_community')}} ">
                     <span class="text nav-text ms-4"> Join Your Community</span>
                 </a>
             </li>
@@ -103,5 +103,37 @@
     </div>
 </div>
 </nav>
+
+<div class="col-lg-8 about-program">
+    <div class="text-start mt-2 prof-details mb-2"><h1 >Join Community</h1>
+    </div>
+   <div class="prof-details  p-lg-4 mt-3 ">
+    <h3></h3>
+    <img src=" {{url_for('static', filename='images/improve.jpeg')}} " alt="" width="900" height="600">
+    <br>
+    <br>
+    <p>Your ALX Transforms Tech Program Challenge community is one of the most powerful resources 
+        you will have at your fingertips during your learning journey.</p>
+    <br>
+    <p>
+        Within your online community you can:
+    </p>
+    <br>
+    <ol>
+        <li> <b>Ask</b> any technical question you have regarding 
+            your track content or the field related to your track in general</li>
+        <li> <b>Get technical support</b> from your tutors and peers</li>
+        <li>  <b>Read</b> useful resources and topics to deepen your knowledge in the world of technology</li>
+        <li><b>Build your professional network</b>  by being part of a vibrant community of aspiring programmers</li>
+        <li> <b>Know</b> all the updates and news regarding the ALX Transforms Tech Program Challenge</li>
+        <li> <b>Participate</b> in interesting discussions about technology, careers, and much more!</li>
+       
+
+
+
+    </ol>
+  </div>
+   
+</section>
 
 {%endblock%}

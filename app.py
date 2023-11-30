@@ -92,8 +92,9 @@ def user_profile():
 #courses page
 @app.route('/courses', methods=['POST', 'GET']) 
 def courses():
+    form=EnrollUserForm()
     courses = Course.query.all()
-    return render_template('courses.html',  courses=courses)
+    return render_template('courses.html',  courses=courses, form=form)
 
 @app.route('/course_details' , methods=['POST', 'GET'])
 @login_required
@@ -104,11 +105,48 @@ def course_details():
 
 #modules page
 @app.route('/intro-module', methods=['POST', 'GET'])
+@login_required
 def modules():
     image_file = url_for('static', filename='images/' + current_user.image_file)
     return render_template('intro-module.html', image_file=image_file)
 
 
+#Enroll User to a Course
+@app.route('/enroll-user/<int:course_id>', methods=['POST','GET'])
+@login_required
+def enroll_user(course_id):
+    form = EnrollUserForm(request.form)
+    user = current_user
+    course = Course.query.get_or_404(course_id)
+
+    #Check if the user is already enrolled in the course
+    if course in user.courses:
+        flash('You are already enrolled in this course', 'danger')
+        return redirect(url_for('course_details', course_id=course.id))
+    user.courses.append(course)
+    db.session.commit()
+    return render_template('courses.html', form=form)
+
+
+#introduction module
+@app.route('/about-program', methods=['POST', 'GET'])
+@login_required
+def about_program():
+    image_file = url_for('static', filename='images/' + current_user.image_file)
+    return render_template('about_program.html', image_file=image_file)
+    
+#program duration
+@app.route('/duration', methods=['POST', 'GET']) 
+@login_required
+def program_duration():
+    image_file = url_for('static', filename='images/' + current_user.image_file)
+    return render_template('program-duration.html', image_file=image_file)
+
+@app.route('/join-community', methods=['POST', 'GET'])
+@login_required
+def join_community():
+    image_file = url_for('static', filename='images/' + current_user.image_file)
+    return render_template('join-community.html', image_file=image_file)
 
 #Add student
 @app.route('/students/add', methods=['GET','POST'])
