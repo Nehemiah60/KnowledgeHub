@@ -1,7 +1,10 @@
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body{
     background: whitesmoke; 
-    overflow: hidden;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -579,7 +582,7 @@ width: 13%;
 .accordion {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease;
+    transition: max-height 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     
 }
 
@@ -624,6 +627,10 @@ width: 13%;
 .sidebar header .image-text{
     display: flex;
     align-items: center;
+}
+.about-program{
+    margin-left: 20%;
+    padding-top: 3%;
 }
 
 header .image-text .header-text{
@@ -782,4 +789,31 @@ background: #a6a6a6;
 
 .dark .iconS{
     color: wheat;
+}
+
+
+/***STYLING THE ENROLL FORM**/
+.enroll-form input[type=submit]{
+    width:15%;
+    border-radius: 25px;
+    box-sizing: border-box;
+    margin:5% 0 0 70%;
+    font-size: 20px;
+    background: blue; 
+    padding: 3;
+    height: fit-content;
+    border: none;
+    
+/* width: 50%;
+background: lightskyblue;
+color: white;
+font-size: 13px;
+border-radius: 5px;
+padding: 2px 2px;
+margin: 10px 0;
+box-sizing: border-box; */
+
+}
+.enroll-form input[type=submit]:hover{
+    background:black;
 }

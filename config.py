@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import relationship
 from flask_migrate import Migrate
 from datetime import datetime
 from flask_login import (UserMixin, LoginManager, login_user, 

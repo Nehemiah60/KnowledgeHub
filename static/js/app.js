@@ -78,21 +78,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   
     // Toggle dark mode on switch click
-    modeSwitch.addEventListener('click', function () {
-      body.classList.toggle('dark');
-      const isDarkMode = body.classList.contains('dark');
-  
-      // Update dark mode preference in localStorage
-      localStorage.setItem('darkMode', isDarkMode);
-  
-      if (isDarkMode) {
-        modeText.textContent = 'Light Mode';
-      } else {
-        modeText.textContent = 'Dark Mode';
-      }
+    document.addEventListener('DOMContentLoaded', function () {
+        modeSwitch.addEventListener('click', function () {
+            body.classList.toggle('dark');
+            const isDarkMode = body.classList.contains('dark');
+        
+            // Update dark mode preference in localStorage
+            localStorage.setItem('darkMode', isDarkMode);
+        
+            if (isDarkMode) {
+              modeText.textContent = 'Light Mode';
+            } else {
+              modeText.textContent = 'Dark Mode';
+            }
+          });
+        });
+      
     });
-  });
-
+   
   //Toggle the SIDEBAR
   
 

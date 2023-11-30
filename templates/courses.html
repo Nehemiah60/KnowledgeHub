@@ -66,6 +66,14 @@
                   <p class="about-text mt-3 mb-2 text-start p-3"> {{ course.description }}</p>
           
                 </div>
+
+                <div class="enroll-form"> 
+
+                  <form method="POST" action="{{ url_for('enroll_user', course_id=course.id) }}">
+                    {{form.hidden_tag()}}
+                    {{form.submit()}}
+                </form>
+                </div>
                 {%endfor%}
                
               

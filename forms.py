@@ -56,3 +56,7 @@ class ProfileUpdateForm(FlaskForm):
             if user:
                 raise ValidationError("A user with that email already exists. Choose a different email")
 
+
+#Enroll User Form
+class EnrollUserForm(FlaskForm):
+    submit          = SubmitField('Enroll Today')
