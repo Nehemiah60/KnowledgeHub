@@ -803,17 +803,20 @@ background: #a6a6a6;
     padding: 3;
     height: fit-content;
     border: none;
-    
-/* width: 50%;
-background: lightskyblue;
-color: white;
-font-size: 13px;
-border-radius: 5px;
-padding: 2px 2px;
-margin: 10px 0;
-box-sizing: border-box; */
 
 }
 .enroll-form input[type=submit]:hover{
     background:black;
+}
+
+/***STYLING MY FLASH MESSAGE****/
+.alert{
+    width: 25.5%;
+    border: none;
+    left: 37%;
+    top: 2.5%;
+    font-size: 15px;
+    height: 45px;
+    box-sizing: border-box;
+    padding: 10 3 0 8;
 }

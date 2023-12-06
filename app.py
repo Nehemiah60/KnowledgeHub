@@ -35,6 +35,7 @@ def register_user():
 #user login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    #Lets first check if the current user is already logged in, and redirect them to there profile page
     form = LoginForm(request.form)
     if form.validate_on_submit():
         try:
@@ -91,15 +92,22 @@ def user_profile():
 
 #courses page
 @app.route('/courses', methods=['POST', 'GET']) 
+@login_required
 def courses():
+    image_file  = url_for('static', filename='images/' + current_user.image_file)
     form=EnrollUserForm()
     courses = Course.query.all()
-    return render_template('courses.html',  courses=courses, form=form)
+    return render_template('courses.html',  courses=courses, form=form, image_file=image_file)
 
-@app.route('/course_details' , methods=['POST', 'GET'])
+@app.route('/course_details/<int:course_id>' , methods=['POST', 'GET'])
 @login_required
-def course_details():
-    image_file = url_for('static', filename='images/' + current_user.image_file)
+def course_details(course_id):
+    image_file  = url_for('static', filename='images/' + current_user.image_file)
+    user_id     = current_user.id
+    module_id   = Module.query.filter_by(course_id=course_id)
+    module_progress= {}
+
+    # for module in modules
     
     return render_template('course_details.html', image_file=image_file)
 
@@ -117,13 +125,21 @@ def modules():
 def enroll_user(course_id):
     form = EnrollUserForm(request.form)
     user = current_user
-    course = Course.query.get_or_404(course_id)
+    course = Course.query.get_or_404(course_id=id)
 
     #Check if the user is already enrolled in the course
     if course in user.courses:
         flash('You are already enrolled in this course', 'danger')
-        return redirect(url_for('course_details', course_id=course.id))
-    user.courses.append(course)
+        return redirect(url_for('courses'))
+
+    db.session.execute(
+        enrollment.insert().values(
+            user_id=user.id,
+            course_id=course.id,
+            username=user.username,
+            course_title=course.title
+        )
+    )
     db.session.commit()
     return render_template('courses.html', form=form)
 
@@ -147,6 +163,53 @@ def program_duration():
 def join_community():
     image_file = url_for('static', filename='images/' + current_user.image_file)
     return render_template('join-community.html', image_file=image_file)
+
+#FUNCTION TO SEND A RESET PASSWORD LINK TO MY EMAIL
+def password_request_email(user):
+    token = user.generate_token()
+    email_message = Message('Password Reset Request', 
+                            sender='knowledgehub@gmail.com', 
+                            recipients=[user.email])
+    email_message.body = f'''Visit the link to reset your password:
+{url_for('reset_password_form', token=token, _external=True)}
+
+If you did not make this request, Kindly ignore the email. 
+    
+    '''
+    mail.send(email_message)
+
+#RESET PASSWORD ROUTE
+@app.route('/reset_password_link', methods=['POST', 'GET'])
+def reset_request():
+    #ensure the user is logged out before resseting their password
+    if current_user.is_authenticated:
+        return redirect(url_for('user_profile'))
+    form = RequestLinkForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        password_request_email(user)
+        flash('Email has been sent with the instructions to reset password')
+        return redirect(url_for('login'))
+    return render_template('request_password_reset.html', title='Reset Password', form=form)
+
+#A ROUTE TO RESET THE PASSWORD ONCE THE LINK IS CLICKED
+@app.route('/reset_password/<token>', methods=['POST', 'GET'])
+def reset_password_form(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('user_profile'))
+    user = User.validate_token(token)
+    if user is None:
+        flash('The token has expired', 'danger')
+        return redirect(url_for('reset_request'))
+    form = ResetPasswordForm()
+    if form.validate_on_submit():
+        hashed_password     = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user.user_password = hashed_password
+        db.session.commit()
+        flash('Your password has been changed. You are able to Log in with New Password', 'success')
+        return redirect(url_for('login'))
+    return render_template('reset_password.html', form=form, token=token)
+    
 
 #Add student
 @app.route('/students/add', methods=['GET','POST'])
@@ -230,7 +293,7 @@ def delete_student(id):
 #Error handler
 @app.errorhandler(401)
 def unauthorized(error):
-    flash('You must be logged in to access the page.', 'danger')
+    flash('You Must be Logged in to Access the Page.', 'danger')
     return redirect(url_for('login'))
  
 
