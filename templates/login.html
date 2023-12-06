@@ -34,11 +34,13 @@
             {% endif %}
         </div>
        
-    
-        <div class="forgot-pass">Forgot Password?</div>
+        <a href=" {{ url_for('reset_request') }}">
+            <div class="forgot-pass">Forgot Password?</div>
+        </a>
+       
         {{form.submit()}}
         <div class="signup">
-            Not a member? <a href="{{ url_for('login') }}">Sign Up</a>
+            Not a member? <a href="{{ url_for('register_user') }}">Sign Up</a>
         </div>
     </form>
 </div>

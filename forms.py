@@ -57,6 +57,22 @@ class ProfileUpdateForm(FlaskForm):
                 raise ValidationError("A user with that email already exists. Choose a different email")
 
 
-#Enroll User Form
+# Enroll User Form
 class EnrollUserForm(FlaskForm):
     submit          = SubmitField('Enroll Today')
+
+# ResetPasswordForm A link is sent to the email to reset password
+class RequestLinkForm(FlaskForm):
+    email           = StringField('Email', validators=[DataRequired(), Email()])
+    submit          = SubmitField('Submit')
+
+    #Validate whether there is a user with the provided mail
+    def validate_email(self, email):
+        user        = User.query.filter_by(email=email.data).first()
+        if user is None:
+            raise ValidationError('There is no user with that email. Register first.')
+
+class ResetPasswordForm(FlaskForm):
+    password         = PasswordField('Password', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password', message='Password do not match')])
+    submit           = SubmitField('Reset Password')
